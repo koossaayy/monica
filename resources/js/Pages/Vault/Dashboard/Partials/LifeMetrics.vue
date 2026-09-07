@@ -11,6 +11,8 @@ import PrettySpan from '@/Shared/Form/PrettySpan.vue';
 import HoverMenu from '@/Shared/HoverMenu.vue';
 import { ChartSpline } from 'lucide-vue-next';
 
+const t = trans;
+
 const props = defineProps({
   data: Object,
 });
@@ -53,7 +55,7 @@ const store = () => {
   axios
     .post(props.data.url.store, form)
     .then((response) => {
-      flash(trans('The life metric has been created'), 'success');
+      flash(trans(t('The life metric has been created')), 'success');
       loadingState.value = '';
       createLifeMetricModalShown.value = false;
       localLifeMetrics.value.push(response.data.data);
@@ -84,7 +86,7 @@ const update = (lifeMetric) => {
   axios
     .put(lifeMetric.url.update, form)
     .then((response) => {
-      flash(trans('The life metric has been updated'), 'success');
+      flash(trans(t('The life metric has been updated')), 'success');
       loadingState.value = '';
       editedLifeMetricId.value = 0;
       localLifeMetrics.value[localLifeMetrics.value.findIndex((x) => x.id === lifeMetric.id)] = response.data.data;
@@ -95,11 +97,11 @@ const update = (lifeMetric) => {
 };
 
 const destroy = (lifeMetric) => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     axios
       .delete(lifeMetric.url.destroy)
       .then(() => {
-        flash(trans('The life metric has been deleted'), 'success');
+        flash(trans(t('The life metric has been deleted')), 'success');
         let id = localLifeMetrics.value.findIndex((x) => x.id === lifeMetric.id);
         localLifeMetrics.value.splice(id, 1);
       })
@@ -220,7 +222,7 @@ const destroy = (lifeMetric) => {
                   <td :style="'--size: calc(' + month.events + '/' + lifeMetric.max_number_of_events">
                     {{ month.friendly_name }}
 
-                    <span class="tooltip"> {{ month.events }} events </span>
+                    <span class="tooltip"> {{ $t('{0} events', [month.events]) }} </span>
                   </td>
                 </tr>
               </tbody>

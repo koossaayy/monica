@@ -1,5 +1,5 @@
 <template>
-  <layout title="Dashboard" :layout-data="layoutData">
+  <layout :title="$t('Dashboard')" :layout-data="layoutData">
     <main class="relative mt-16 sm:mt-24">
       <!-- blank state -->
       <div v-if="data.vaults.length === 0" class="mx-auto mb-6 max-w-md px-2 py-2 sm:px-6 sm:py-6 lg:px-8">
@@ -36,10 +36,10 @@
           </p>
           <p>
             <a href="https://phpc.social/@regis" rel="noopener noreferrer" class="text-blue-500 hover:underline"
-              >Régis</a
+              >{{ $t('Régis') }}</a
             >
             &amp;
-            <a href="https://mamot.fr/@asbin" rel="noopener noreferrer" class="text-blue-500 hover:underline">Alexis</a>
+            <a href="https://mamot.fr/@asbin" rel="noopener noreferrer" class="text-blue-500 hover:underline">{{ $t('Alexis') }}</a>
           </p>
         </div>
       </div>

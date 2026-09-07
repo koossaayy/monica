@@ -12,6 +12,8 @@ import {
   platformAuthenticatorIsAvailable,
 } from '@simplewebauthn/browser';
 
+const t = trans;
+
 const props = defineProps({
   publicKey: Object,
   remember: Boolean,
@@ -43,7 +45,7 @@ onMounted(() => {
       if (available) {
         loginWaitForKey(props.publicKey);
       } else {
-        errorMessage.value = trans('This browser does not support autofill.');
+        errorMessage.value = trans(t('This browser does not support autofill.'));
       }
     });
   }
@@ -52,9 +54,9 @@ onMounted(() => {
 const _errorMessage = (name, message) => {
   switch (name) {
     case 'InvalidStateError':
-      return trans('Unexpected error on login.');
+      return trans(t('Unexpected error on login.'));
     case 'NotAllowedError':
-      return trans('The operation either timed out or was not allowed.');
+      return trans(t('The operation either timed out or was not allowed.'));
     default:
       return message;
   }

@@ -7,5 +7,5 @@ defineProps({
 
 <template>
   <div v-if="data.type === 'svg'" v-html="data.content" />
-  <img v-else :class="imgClasses" :src="data.content" alt="avatar" />
+  <img v-else :class="imgClasses" :src="data.content" :alt="$t('avatar')" />
 </template>

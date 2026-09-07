@@ -102,7 +102,7 @@ defineProps({
         </div>
 
         <div v-else class="mb-6 rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
-          <img src="/img/journal_photo_index_blank.svg" alt="blank state" class="mx-auto block h-32 w-32 py-6" />
+          <img src="/img/journal_photo_index_blank.svg" :alt="$t('blank state')" class="mx-auto block h-32 w-32 py-6" />
           <p class="p-5 text-center">{{ $t('Add a photo to a journal entry to see it here.') }}</p>
         </div>
       </div>

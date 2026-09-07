@@ -171,7 +171,7 @@ export default {
       axios
         .post(this.data.url.tag_store, this.form)
         .then((response) => {
-          this.flash(this.$t('The tag has been created'), 'success');
+          this.flash(this.$t(this.$t('The tag has been created')), 'success');
           this.localTags.unshift(response.data.data);
           this.loadingState = null;
           this.createTagModalShown = false;
@@ -188,7 +188,7 @@ export default {
       axios
         .put(tag.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The tag has been updated'), 'success');
+          this.flash(this.$t(this.$t('The tag has been updated')), 'success');
           this.localTags[this.localTags.findIndex((x) => x.id === tag.id)] = response.data.data;
           this.loadingState = null;
           this.editTagModalShownId = 0;
@@ -200,11 +200,11 @@ export default {
     },
 
     destroy(tag) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(tag.url.destroy)
           .then(() => {
-            this.flash(this.$t('The tag has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The tag has been deleted')), 'success');
             var id = this.localTags.findIndex((x) => x.id === tag.id);
             this.localTags.splice(id, 1);
           })

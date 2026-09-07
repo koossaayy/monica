@@ -7,6 +7,8 @@ import Avatar from '@/Shared/Avatar.vue';
 import Pagination from '@/Components/Pagination.vue';
 import Dropdown from '@/Shared/Form/Dropdown.vue';
 
+const t = trans;
+
 const props = defineProps({
   layoutData: Object,
   data: Object,
@@ -19,7 +21,7 @@ const form = useForm({
 
 const update = () => {
   axios.put(props.data.url.sort.update, form).then((response) => {
-    localStorage.success = trans('Changes saved');
+    localStorage.success = trans(t('Changes saved'));
     router.visit(response.data.data);
   });
 };

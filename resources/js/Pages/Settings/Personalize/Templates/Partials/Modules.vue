@@ -162,7 +162,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('The module has been added'), 'success');
+          this.flash(this.$t(this.$t('The module has been added')), 'success');
           this.localPageModules.unshift(response.data.data);
           this.addModuleModalShown = false;
           this.localAllModules[this.localAllModules.findIndex((x) => x.id === module.id)].already_used = true;
@@ -176,7 +176,7 @@ export default {
       axios
         .delete(module.url.destroy)
         .then(() => {
-          this.flash(this.$t('The module has been removed'), 'success');
+          this.flash(this.$t(this.$t('The module has been removed')), 'success');
           this.localAllModules[this.localAllModules.findIndex((x) => x.id === module.id)].already_used = false;
 
           var id = this.localPageModules.findIndex((x) => x.id === module.id);
@@ -194,7 +194,7 @@ export default {
       axios
         .post(event.moved.element.url.position, this.form)
         .then(() => {
-          this.flash(this.$t('The position has been saved'), 'success');
+          this.flash(this.$t(this.$t('The position has been saved')), 'success');
         })
         .catch((error) => {
           this.loadingState = null;

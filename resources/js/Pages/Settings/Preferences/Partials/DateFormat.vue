@@ -127,7 +127,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('Changes saved'), 'success');
+          this.flash(this.$t(this.$t('Changes saved')), 'success');
           this.localDateFormat = this.form.dateFormat;
           this.localHumanDateFormat = response.data.data.human_date_format;
           this.editMode = false;

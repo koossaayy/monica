@@ -7,6 +7,8 @@ import JetInput from '@/Components/Input.vue';
 import JetLabel from '@/Components/Label.vue';
 import JetValidationErrors from '@/Components/ValidationErrors.vue';
 
+const t = trans;
+
 const props = defineProps({
   data: Object,
 });
@@ -22,7 +24,7 @@ const form = useForm({
 const submit = () => {
   form.post(props.data.url.store, {
     onSuccess: (response) => {
-      localStorage.success = trans('Your account has been created');
+      localStorage.success = trans(t('Your account has been created'));
       router.visit(response.data.data);
     },
   });

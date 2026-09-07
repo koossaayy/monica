@@ -167,7 +167,7 @@
 
             <!-- emotion -->
             <div v-if="form.emotion" class="mt-2 block w-full">
-              <p class="mb-2">How did you feel?</p>
+              <p class="mb-2">{{ $t('How did you feel?') }}</p>
               <div v-for="emotion in data.emotions" :key="emotion.id" class="mb-2 flex items-center">
                 <input
                   :id="emotion.type"
@@ -315,7 +315,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('The note has been created'), 'success');
+          this.flash(this.$t(this.$t('The note has been created')), 'success');
           this.localNotes.unshift(response.data.data);
           this.loadingState = '';
           this.createNoteModalShown = false;
@@ -333,7 +333,7 @@ export default {
         .put(note.url.update, this.form)
         .then((response) => {
           this.loadingState = '';
-          this.flash(this.$t('The note has been updated'), 'success');
+          this.flash(this.$t(this.$t('The note has been updated')), 'success');
           this.localNotes[this.localNotes.findIndex((x) => x.id === note.id)] = response.data.data;
           this.editedNoteId = 0;
         })
@@ -344,11 +344,11 @@ export default {
     },
 
     destroy(note) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(note.url.destroy)
           .then(() => {
-            this.flash(this.$t('The note has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The note has been deleted')), 'success');
             var id = this.localNotes.findIndex((x) => x.id === note.id);
             this.localNotes.splice(id, 1);
           })

@@ -110,7 +110,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then(() => {
-          this.flash(this.$t('Changes saved'), 'success');
+          this.flash(this.$t(this.$t('Changes saved')), 'success');
           this.localNumberFormat = this.form.numberFormat;
           this.editMode = false;
           this.loadingState = null;

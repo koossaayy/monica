@@ -8,6 +8,8 @@ import PrettySpan from '@/Shared/Form/PrettySpan.vue';
 import TextInput from '@/Shared/Form/TextInput.vue';
 import Errors from '@/Shared/Form/Errors.vue';
 
+const t = trans;
+
 const props = defineProps({
   layoutData: Object,
   data: Object,
@@ -45,7 +47,7 @@ const submit = () => {
 };
 
 const destroy = (metric) => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     axios
       .delete(metric.url.destroy)
       .then(() => {

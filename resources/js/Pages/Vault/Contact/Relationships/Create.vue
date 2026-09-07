@@ -416,8 +416,8 @@ export default {
 
   created() {
     this.form.base_contact_id = this.data.contact.id;
-    this.fromRelationship = 'Father';
-    this.toRelationship = 'Child';
+    this.fromRelationship = this.$t('Father');
+    this.toRelationship = this.$t('Child');
   },
 
   methods: {
@@ -499,7 +499,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          localStorage.success = this.$t('The relationship has been added');
+          localStorage.success = this.$t(this.$t('The relationship has been added'));
           this.$inertia.visit(response.data.data);
         })
         .catch((error) => {

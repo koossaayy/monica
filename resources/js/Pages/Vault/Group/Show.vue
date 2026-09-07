@@ -8,6 +8,8 @@ import JetConfirmationModal from '@/Components/Jetstream/ConfirmationModal.vue';
 import JetDangerButton from '@/Components/Jetstream/DangerButton.vue';
 import JetSecondaryButton from '@/Components/Jetstream/SecondaryButton.vue';
 
+const t = trans;
+
 const props = defineProps({
   layoutData: Object,
   data: Object,
@@ -26,7 +28,7 @@ const destroy = () => {
     .then((response) => {
       deleteGroupForm.processing = false;
 
-      localStorage.success = trans('The group has been deleted');
+      localStorage.success = trans(t('The group has been deleted'));
       router.visit(response.data.data);
     })
     .catch((error) => {

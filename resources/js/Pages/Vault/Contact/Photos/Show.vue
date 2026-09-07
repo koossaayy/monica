@@ -133,11 +133,11 @@ export default {
 
   methods: {
     destroy(photo) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(photo.url.destroy)
           .then((response) => {
-            localStorage.success = this.$t('The photo has been deleted');
+            localStorage.success = this.$t(this.$t('The photo has been deleted'));
             this.$inertia.visit(response.data.data);
           })
           .catch((error) => {

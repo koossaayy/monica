@@ -27,7 +27,7 @@ defineProps({
           <!-- avatar -->
           <div class="me-2">
             <div v-if="contact.avatar.type === 'svg'" class="h-16 w-16 rounded-full" v-html="contact.avatar.content" />
-            <img v-else class="h-16 w-16 rounded-full" :src="contact.avatar.content" alt="avatar" />
+            <img v-else class="h-16 w-16 rounded-full" :src="contact.avatar.content" :alt="$t('avatar')" />
           </div>
 
           <div>
@@ -66,7 +66,7 @@ defineProps({
         <div class="img relative">
           <Link :href="contact.url">
             <div v-if="contact.avatar.type === 'svg'" :class="avatarClasses" v-html="contact.avatar.content" />
-            <img v-else :class="avatarClasses" :src="contact.avatar.content" alt="avatar" />
+            <img v-else :class="avatarClasses" :src="contact.avatar.content" :alt="$t('avatar')" />
           </Link>
         </div>
 

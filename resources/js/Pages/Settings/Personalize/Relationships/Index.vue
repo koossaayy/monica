@@ -441,7 +441,7 @@ export default {
       axios
         .post(this.data.url.group_type_store, this.form)
         .then((response) => {
-          this.flash(this.$t('The group type has been created'), 'success');
+          this.flash(this.$t(this.$t('The group type has been created')), 'success');
           this.localGroupTypes.unshift(response.data.data);
           this.loadingState = null;
           this.createRelationshipTypeModalShown = false;
@@ -458,7 +458,7 @@ export default {
       axios
         .put(groupType.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The group type has been updated'), 'success');
+          this.flash(this.$t(this.$t('The group type has been updated')), 'success');
           this.localGroupTypes[this.localGroupTypes.findIndex((x) => x.id === groupType.id)] = response.data.data;
           this.loadingState = null;
           this.renameRelationshipGroupTypeModalShownId = 0;
@@ -473,14 +473,14 @@ export default {
       if (
         confirm(
           this.$t(
-            'Are you sure? This will delete all the relationships of this type for all the contacts that were using it.',
+            this.$t('Are you sure? This will delete all the relationships of this type for all the contacts that were using it.'),
           ),
         )
       ) {
         axios
           .delete(groupType.url.destroy)
           .then(() => {
-            this.flash(this.$t('The group type has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The group type has been deleted')), 'success');
             var id = this.localGroupTypes.findIndex((x) => x.id === groupType.id);
             this.localGroupTypes.splice(id, 1);
           })
@@ -497,7 +497,7 @@ export default {
       axios
         .post(groupType.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('The relationship type has been created'), 'success');
+          this.flash(this.$t(this.$t('The relationship type has been created')), 'success');
           this.loadingState = null;
           this.createRelationshipTypeModalId = 0;
           var id = this.localGroupTypes.findIndex((x) => x.id === groupType.id);
@@ -515,7 +515,7 @@ export default {
       axios
         .put(type.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The relationship type has been updated'), 'success');
+          this.flash(this.$t(this.$t('The relationship type has been updated')), 'success');
           this.loadingState = null;
           this.renameRelationshipTypeModalId = 0;
           var groupTypeId = this.localGroupTypes.findIndex((x) => x.id === groupType.id);
@@ -532,14 +532,14 @@ export default {
       if (
         confirm(
           this.$t(
-            'Are you sure? This will delete all the relationships of this type for all the contacts that were using it.',
+            this.$t('Are you sure? This will delete all the relationships of this type for all the contacts that were using it.'),
           ),
         )
       ) {
         axios
           .delete(type.url.destroy)
           .then(() => {
-            this.flash(this.$t('The relationship type has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The relationship type has been deleted')), 'success');
             var groupTypeId = this.localGroupTypes.findIndex((x) => x.id === groupType.id);
             var typeId = this.localGroupTypes[groupTypeId].types.findIndex((x) => x.id === type.id);
             this.localGroupTypes[groupTypeId].types.splice(typeId, 1);

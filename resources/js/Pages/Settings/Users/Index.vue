@@ -1,5 +1,5 @@
 <template>
-  <layout title="Dashboard" :layout-data="layoutData">
+  <layout :title="$t('Dashboard')" :layout-data="layoutData">
     <!-- breadcrumb -->
     <nav class="bg-white dark:bg-gray-900 sm:border-b border-gray-200 dark:border-gray-700">
       <div class="max-w-8xl mx-auto hidden px-4 py-2 sm:px-6 md:block">
@@ -227,7 +227,7 @@ export default {
         .put(user.url.update, this.form)
         .then((response) => {
           this.editModalshownId = 0;
-          this.flash(this.$t('The user has been updated'), 'success');
+          this.flash(this.$t(this.$t('The user has been updated')), 'success');
           this.localUsers[this.localUsers.findIndex((x) => x.id === user.id)] = response.data.data;
           this.loadingState = null;
         })
@@ -238,9 +238,9 @@ export default {
     },
 
     destroy(user) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios.delete(user.url.destroy).then(() => {
-          this.flash(this.$t('The user has been deleted'), 'success');
+          this.flash(this.$t(this.$t('The user has been deleted')), 'success');
           var id = this.localUsers.findIndex((x) => x.id === user.id);
           this.localUsers.splice(id, 1);
         });

@@ -26,7 +26,7 @@ const get = (day) => {
 </script>
 
 <template>
-  <layout title="Calendar" :inside-vault="true" :layout-data="layoutData">
+  <layout :title="$t('Calendar')" :inside-vault="true" :layout-data="layoutData">
     <main class="relative sm:mt-24">
       <div class="max-w-8xl mx-auto py-2 sm:px-6 sm:py-6 lg:px-8">
         <div class="special-grid grid grid-cols-1 gap-6 sm:grid-cols-3">

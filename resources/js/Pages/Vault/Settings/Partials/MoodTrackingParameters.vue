@@ -8,6 +8,8 @@ import PrettySpan from '@/Shared/Form/PrettySpan.vue';
 import TextInput from '@/Shared/Form/TextInput.vue';
 import Errors from '@/Shared/Form/Errors.vue';
 
+const t = trans;
+
 const props = defineProps({
   data: Object,
 });
@@ -76,7 +78,7 @@ const update = (moodTrackingParameter) => {
 };
 
 const destroy = (moodTrackingParameter) => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     axios
       .delete(moodTrackingParameter.url.destroy)
       .then(() => {
@@ -288,7 +290,7 @@ const updatePosition = (event) => {
     <div
       v-if="localMoodTrackingParameters.length === 0"
       class="rounded-lg bg-white dark:border-gray-700 dark:bg-gray-900">
-      <p class="p-5 text-center">Add at least one parameter to be able to track your mood.</p>
+      <p class="p-5 text-center">{{ $t('Add at least one parameter to be able to track your mood.') }}</p>
     </div>
   </div>
 </template>

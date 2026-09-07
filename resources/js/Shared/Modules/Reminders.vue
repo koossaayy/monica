@@ -13,6 +13,8 @@ import Dropdown from '@/Shared/Form/Dropdown.vue';
 import Errors from '@/Shared/Form/Errors.vue';
 import { Bell } from 'lucide-vue-next';
 
+const t = trans;
+
 const props = defineProps({
   data: Object,
 });
@@ -74,7 +76,7 @@ const submit = () => {
   axios
     .post(props.data.url.store, form)
     .then((response) => {
-      flash(trans('The reminder has been created'), 'success');
+      flash(trans(t('The reminder has been created')), 'success');
       localReminders.value.unshift(response.data.data);
       loadingState.value = '';
       addReminderModalShown.value = false;
@@ -92,7 +94,7 @@ const update = (reminder) => {
     .put(reminder.url.update, form)
     .then((response) => {
       loadingState.value = '';
-      flash(trans('The reminder has been updated'), 'success');
+      flash(trans(t('The reminder has been updated')), 'success');
       localReminders.value[localReminders.value.findIndex((x) => x.id === reminder.id)] = response.data.data;
       editedReminderId.value = 0;
     })
@@ -103,11 +105,11 @@ const update = (reminder) => {
 };
 
 const destroy = (reminder) => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     axios
       .delete(reminder.url.destroy)
       .then(() => {
-        flash(trans('The reminder has been deleted'), 'success');
+        flash(trans(t('The reminder has been deleted')), 'success');
         let id = localReminders.value.findIndex((x) => x.id === reminder.id);
         localReminders.value.splice(id, 1);
       })
@@ -311,7 +313,7 @@ const destroy = (reminder) => {
               <a-tooltip
                 v-if="reminder.type !== 'one_time'"
                 placement="topLeft"
-                title="Recurring"
+                :title="$t('Recurring')"
                 arrow-point-at-center>
                 <RefreshIcon />
               </a-tooltip>

@@ -129,7 +129,7 @@ export default {
       axios
         .put(this.data.url.update, this.form)
         .then((response) => {
-          localStorage.success = this.$t('The template has been set');
+          localStorage.success = this.$t(this.$t('The template has been set'));
           this.$inertia.visit(response.data.data);
         })
         .catch((error) => {

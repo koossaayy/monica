@@ -250,7 +250,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('The gift state has been created'), 'success');
+          this.flash(this.$t(this.$t('The gift state has been created')), 'success');
           this.localGiftStates.push(response.data.data);
           this.loadingState = null;
           this.createGiftStateModalShown = false;
@@ -267,7 +267,7 @@ export default {
       axios
         .put(giftState.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The gift state has been updated'), 'success');
+          this.flash(this.$t(this.$t('The gift state has been updated')), 'success');
           this.localGiftStates[this.localGiftStates.findIndex((x) => x.id === giftState.id)] = response.data.data;
           this.loadingState = null;
           this.editGiftStateId = 0;
@@ -279,11 +279,11 @@ export default {
     },
 
     destroy(giftState) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(giftState.url.destroy)
           .then(() => {
-            this.flash(this.$t('The gift state has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The gift state has been deleted')), 'success');
             var id = this.localGiftStates.findIndex((x) => x.id === giftState.id);
             this.localGiftStates.splice(id, 1);
           })
@@ -301,7 +301,7 @@ export default {
       axios
         .post(event.moved.element.url.position, this.form)
         .then(() => {
-          this.flash(this.$t('The position has been saved'), 'success');
+          this.flash(this.$t(this.$t('The position has been saved')), 'success');
         })
         .catch((error) => {
           this.loadingState = null;

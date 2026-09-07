@@ -318,7 +318,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          localStorage.success = this.$t('The contact has been added');
+          localStorage.success = this.$t(this.$t('The contact has been added'));
           this.$inertia.visit(response.data.data);
         })
         .catch((error) => {

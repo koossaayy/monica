@@ -9,6 +9,8 @@ import TextInput from '@/Shared/Form/TextInput.vue';
 import Dropdown from '@/Shared/Form/Dropdown.vue';
 import Errors from '@/Shared/Form/Errors.vue';
 
+const t = trans;
+
 const props = defineProps({
   layoutData: Object,
   data: Object,
@@ -34,7 +36,7 @@ const update = () => {
     .put(props.data.url.update, form)
     .then((response) => {
       loadingState.value = null;
-      localStorage.success = trans('The group has been updated');
+      localStorage.success = trans(t('The group has been updated'));
       router.visit(response.data.data);
     })
     .catch((error) => {

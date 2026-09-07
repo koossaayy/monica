@@ -224,7 +224,7 @@ export default {
       axios
         .post(this.data.url.address_type_store, this.form)
         .then((response) => {
-          this.flash(this.$t('The address type has been created'), 'success');
+          this.flash(this.$t(this.$t('The address type has been created')), 'success');
           this.localAddressTypes.unshift(response.data.data);
           this.loadingState = null;
           this.createAddressTypeModalShown = false;
@@ -241,7 +241,7 @@ export default {
       axios
         .put(addressType.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The address type has been updated'), 'success');
+          this.flash(this.$t(this.$t('The address type has been updated')), 'success');
           this.localAddressTypes[this.localAddressTypes.findIndex((x) => x.id === addressType.id)] = response.data.data;
           this.loadingState = null;
           this.renameAddressTypeModalShownId = 0;
@@ -256,14 +256,14 @@ export default {
       if (
         confirm(
           this.$t(
-            'Are you sure? This will remove the address types from all contacts, but won’t delete the contacts themselves.',
+            this.$t('Are you sure? This will remove the address types from all contacts, but won’t delete the contacts themselves.'),
           ),
         )
       ) {
         axios
           .delete(addressType.url.destroy)
           .then(() => {
-            this.flash(this.$t('The address type has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The address type has been deleted')), 'success');
             var id = this.localAddressTypes.findIndex((x) => x.id === addressType.id);
             this.localAddressTypes.splice(id, 1);
           })
