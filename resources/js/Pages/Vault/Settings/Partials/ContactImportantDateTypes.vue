@@ -178,7 +178,7 @@ export default {
       axios
         .post(this.data.url.contact_date_important_date_type_store, this.form)
         .then((response) => {
-          this.flash(this.$t('The type has been created'), 'success');
+          this.flash(this.$t(this.$t('The type has been created')), 'success');
           this.localTypes.unshift(response.data.data);
           this.loadingState = null;
           this.createTypeModalShown = false;
@@ -195,7 +195,7 @@ export default {
       axios
         .put(type.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The type has been updated'), 'success');
+          this.flash(this.$t(this.$t('The type has been updated')), 'success');
           this.localTypes[this.localTypes.findIndex((x) => x.id === type.id)] = response.data.data;
           this.loadingState = null;
           this.editTypeModalShownId = 0;
@@ -207,11 +207,11 @@ export default {
     },
 
     destroy(type) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(type.url.destroy)
           .then(() => {
-            this.flash(this.$t('The type has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The type has been deleted')), 'success');
             var id = this.localTypes.findIndex((x) => x.id === type.id);
             this.localTypes.splice(id, 1);
           })

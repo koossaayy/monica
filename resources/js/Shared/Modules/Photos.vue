@@ -133,7 +133,7 @@ export default {
         .post(this.data.url.store, this.form)
         .then((response) => {
           this.localPhotos.unshift(response.data.data);
-          this.flash(this.$t('The photo has been added'), 'success');
+          this.flash(this.$t(this.$t('The photo has been added')), 'success');
         })
         .catch((error) => {
           this.form.errors = error.response.data;
@@ -141,11 +141,11 @@ export default {
     },
 
     destroy(photo) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(photo.url.destroy)
           .then(() => {
-            this.flash(this.$t('The photo has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The photo has been deleted')), 'success');
             var id = this.localPhotos.findIndex((x) => x.id === photo.id);
             this.localPhotos.splice(id, 1);
           })

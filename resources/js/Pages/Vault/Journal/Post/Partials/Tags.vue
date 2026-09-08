@@ -158,7 +158,7 @@ export default {
       axios
         .post(this.data.url.tag_store, this.form)
         .then((response) => {
-          this.flash(this.$t('The tag has been added'), 'success');
+          this.flash(this.$t(this.$t('The tag has been added')), 'success');
           this.form.search = '';
           this.localTagsInVault.push(response.data.data);
           this.localTags.push(response.data.data);

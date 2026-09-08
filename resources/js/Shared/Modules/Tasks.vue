@@ -8,6 +8,8 @@ import CreateOrEditTask from '@/Shared/Modules/TaskItems/CreateOrEditTask.vue';
 import DateIcon from '@/Shared/Icons/DateIcon.vue';
 import { LayoutList } from 'lucide-vue-next';
 
+const t = trans;
+
 const props = defineProps({
   data: Object,
 });
@@ -48,19 +50,19 @@ const getCompleted = () => {
 };
 
 const created = (task) => {
-  flash(trans('The task has been created'), 'success');
+  flash(trans(t('The task has been created')), 'success');
   localTasks.value.unshift(task);
   createTaskModalShown.value = false;
 };
 
 const updated = (task) => {
-  flash(trans('The task has been updated'), 'success');
+  flash(trans(t('The task has been updated')), 'success');
   localTasks.value[localTasks.value.findIndex((x) => x.id === task.id)] = task;
   editedTaskId.value = 0;
 };
 
 const updatedCompleted = (task) => {
-  flash(trans('The task has been updated'), 'success');
+  flash(trans(t('The task has been updated')), 'success');
   localCompletedTasks.value[localCompletedTasks.value.findIndex((x) => x.id === task.id)] = task;
   editedCompletedTaskId.value = 0;
 };
@@ -72,11 +74,11 @@ const toggle = (task) => {
 };
 
 const destroy = (task) => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     axios
       .delete(task.url.destroy)
       .then(() => {
-        flash(trans('The task has been deleted'), 'success');
+        flash(trans(t('The task has been deleted')), 'success');
         var id = localTasks.value.findIndex((x) => x.id === task.id);
         localTasks.value.splice(id, 1);
       })

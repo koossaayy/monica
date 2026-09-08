@@ -191,7 +191,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          localStorage.success = this.$t('Invitation sent');
+          localStorage.success = this.$t(this.$t('Invitation sent'));
           this.$inertia.visit(response.data.data);
         })
         .catch((error) => {

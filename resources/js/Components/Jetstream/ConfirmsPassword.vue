@@ -14,15 +14,15 @@ const emit = defineEmits(['confirmed']);
 defineProps({
   title: {
     type: String,
-    default: trans('Confirm access'),
+    default: trans(trans('Confirm access')),
   },
   content: {
     type: String,
-    default: trans('For your security, please confirm the access to continue.'),
+    default: trans(trans('For your security, please confirm the access to continue.')),
   },
   button: {
     type: String,
-    default: trans('Confirm'),
+    default: trans(trans('Confirm')),
   },
 });
 

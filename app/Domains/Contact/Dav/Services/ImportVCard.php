@@ -76,7 +76,7 @@ class ImportVCard extends BaseService implements ServiceInterface
                 'required',
                 function (string $attribute, mixed $value, Closure $fail) {
                     if (! is_string($value) && ! is_resource($value) && ! $value instanceof VCard) {
-                        $fail($attribute.' must be a string, a resource, or a VCard object.');
+                        $fail(__(':attribute must be a string, a resource, or a VCard object.', ['attribute' => $attribute]));
                     }
                 },
             ],

@@ -38,7 +38,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </li>
-            <li class="inline">Modules</li>
+            <li class="inline">{{ $t('Modules') }}</li>
           </ul>
         </div>
       </div>
@@ -48,7 +48,7 @@
       <div class="mx-auto max-w-6xl px-2 py-2 sm:px-6 sm:py-6 lg:px-8">
         <!-- title + cta -->
         <div class="mb-6 mt-8 sm:mt-0">
-          <h3 class="mb-4 text-center text-xl sm:mb-2">All the modules in the account</h3>
+          <h3 class="mb-4 text-center text-xl sm:mb-2">{{ $t('All the modules in the account') }}</h3>
         </div>
 
         <!-- help text -->
@@ -67,12 +67,8 @@
           </svg>
 
           <div>
-            <p class="mb-1">Modules contain each one of your contact's data.</p>
-            <p class="mb-1">
-              Monica comes with a set of predefined modules that can't be edited or deleted – because we need them for
-              Monica to function properly. However, you can create your own modules to record the data you want in your
-              account.
-            </p>
+            <p class="mb-1">{{ $t('Modules contain each one of your contact\'s data.') }}</p>
+            <p class="mb-1"> {{ $t('Monica comes with a set of predefined modules that can\'t be edited or deleted – because we need them for Monica to function properly. However, you can create your own modules to record the data you want in your account.') }} </p>
           </div>
         </div>
 
@@ -80,8 +76,8 @@
           <!-- left -->
           <div class="p-3 sm:p-0">
             <div class="mb-4 mt-8 items-center justify-between border-b pb-3 sm:mt-0 sm:flex">
-              <h3>Modules</h3>
-              <pretty-button :text="'Add new module'" :icon="'plus'" @click="showPageModal" />
+              <h3>{{ $t('Modules') }}</h3>
+              <pretty-button :text="$t('Add new module')" :icon="'plus'" @click="showPageModal" />
             </div>
 
             <div>
@@ -114,7 +110,7 @@
 
           <!-- middle -->
           <div class="rounded-lg border border-gray-200 dark:border-gray-700">
-            <h3 class="border-b border-gray-200 px-5 py-2 dark:border-gray-700">Module details</h3>
+            <h3 class="border-b border-gray-200 px-5 py-2 dark:border-gray-700">{{ $t('Module details') }}</h3>
 
             <errors :errors="form.errors" />
 
@@ -124,7 +120,7 @@
                 v-model="form.search"
                 :type="'text'"
                 :autofocus="true"
-                :label="'Name of the module'"
+                :label="$t('Name of the module')"
                 :input-class="'block w-full'"
                 :required="true"
                 :autocomplete="false"
@@ -135,9 +131,7 @@
             <div class="border-b border-gray-200 bg-gray-100 p-5 dark:border-gray-700">
               <div
                 class="mb-2 rounded-xs border border-gray-300 bg-white px-5 py-3 text-center dark:bg-gray-900"
-                @click="addRow()">
-                + Add row
-              </div>
+                @click="addRow()"> {{ $t('+ Add row') }} </div>
 
               <div v-for="row in form.rows" :key="row.realId" class="mb-2">
                 <div class="rounded-xs border border-gray-300 bg-white dark:bg-gray-900">
@@ -159,7 +153,7 @@
                             d="M5 22C3.34315 22 2 20.6569 2 19V5C2 3.34315 3.34315 2 5 2H19C20.6569 2 22 3.34315 22 5V19C22 20.6569 20.6569 22 19 22H5ZM4 19C4 19.5523 4.44772 20 5 20H19C19.5523 20 20 19.5523 20 19V5C20 4.44772 19.5523 4 19 4H5C4.44772 4 4 4.44772 4 5V19Z"
                             fill="currentColor" />
                         </svg>
-                        <span>Add a field to the left</span>
+                        <span>{{ $t('Add a field to the left') }}</span>
                       </div>
 
                       <div class="relative me-2 inline cursor-pointer" @click="addFieldToRight(row)">
@@ -177,7 +171,7 @@
                             d="M5 22C3.34315 22 2 20.6569 2 19V5C2 3.34315 3.34315 2 5 2H19C20.6569 2 22 3.34315 22 5V19C22 20.6569 20.6569 22 19 22H5ZM4 19C4 19.5523 4.44772 20 5 20H19C19.5523 20 20 19.5523 20 19V5C20 4.44772 19.5523 4 19 4H5C4.44772 4 4 4.44772 4 5V19Z"
                             fill="currentColor" />
                         </svg>
-                        <span>Add a field to the right</span>
+                        <span>{{ $t('Add a field to the right') }}</span>
                       </div>
                     </div>
 
@@ -196,7 +190,7 @@
                           d="M4 1C2.34315 1 1 2.34315 1 4V20C1 21.6569 2.34315 23 4 23H20C21.6569 23 23 21.6569 23 20V4C23 2.34315 21.6569 1 20 1H4ZM20 3H4C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V4C21 3.44772 20.5523 3 20 3Z"
                           fill="currentColor" />
                       </svg>
-                      <span>Delete row</span>
+                      <span>{{ $t('Delete row') }}</span>
                     </div>
                   </div>
 
@@ -224,7 +218,7 @@
                                 d="M5 22C3.34315 22 2 20.6569 2 19V5C2 3.34315 3.34315 2 5 2H19C20.6569 2 22 3.34315 22 5V19C22 20.6569 20.6569 22 19 22H5ZM4 19C4 19.5523 4.44772 20 5 20H19C19.5523 20 20 19.5523 20 19V5C20 4.44772 19.5523 4 19 4H5C4.44772 4 4 4.44772 4 5V19Z"
                                 fill="currentColor" />
                             </svg>
-                            <span>Change field type</span>
+                            <span>{{ $t('Change field type') }}</span>
                           </div>
                         </div>
 
@@ -243,18 +237,18 @@
                               d="M4 1C2.34315 1 1 2.34315 1 4V20C1 21.6569 2.34315 23 4 23H20C21.6569 23 23 21.6569 23 20V4C23 2.34315 21.6569 1 20 1H4ZM20 3H4C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V4C21 3.44772 20.5523 3 20 3Z"
                               fill="currentColor" />
                           </svg>
-                          <span>Delete field</span>
+                          <span>{{ $t('Delete field') }}</span>
                         </div>
                       </div>
 
                       <!-- choose a field type -->
                       <div class="px-5 py-5">
-                        <p>Choose a field type:</p>
+                        <p>{{ $t('Choose a field type:') }}</p>
                         <ul>
                           <li>
-                            <span>Add a text field</span>
+                            <span>{{ $t('Add a text field') }}</span>
                           </li>
-                          <li>Add a text area</li>
+                          <li>{{ $t('Add a text area') }}</li>
                         </ul>
                       </div>
                     </div>
@@ -276,7 +270,7 @@
 
             <!-- blank state -->
             <div class="mb-6">
-              <p class="p-5 text-center">Please select a module on the left or create a new module.</p>
+              <p class="p-5 text-center">{{ $t('Please select a module on the left or create a new module.') }}</p>
             </div>
           </div>
         </div>

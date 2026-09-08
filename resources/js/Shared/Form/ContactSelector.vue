@@ -13,12 +13,12 @@ const props = defineProps({
   inputClass: String,
   placeholder: {
     type: String,
-    default: () => trans('Find a contact in this vault'),
+    default: () => trans(trans('Find a contact in this vault')),
   },
   label: String,
   labelCta: {
     type: String,
-    default: () => trans('+ add a contact'),
+    default: () => trans(trans('+ add a contact')),
   },
   type: {
     type: String,

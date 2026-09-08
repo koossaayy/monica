@@ -7,6 +7,8 @@ import TextInput from '@/Shared/Form/TextInput.vue';
 import PrettyButton from '@/Shared/Form/PrettyButton.vue';
 import PrettySpan from '@/Shared/Form/PrettySpan.vue';
 
+const t = trans;
+
 const props = defineProps({
   data: Object,
 });
@@ -53,7 +55,7 @@ const store = (journalMetric) => {
 };
 
 const destroy = (journalMetric, postMetric) => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     axios.delete(postMetric.url.destroy).then(() => {
       var id = localJournalMetrics.value.findIndex((x) => x.id === journalMetric.id);
       var postMetricId = localJournalMetrics.value[id].post_metrics.findIndex((x) => x.id === postMetric.id);

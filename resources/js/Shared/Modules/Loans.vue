@@ -16,6 +16,8 @@ import ContactCard from '@/Shared/ContactCard.vue';
 import ArrowIcon from '@/Shared/Icons/ArrowIcon.vue';
 import { HandCoins } from 'lucide-vue-next';
 
+const t = trans;
+
 const props = defineProps({
   layoutData: Object,
   data: Object,
@@ -80,7 +82,7 @@ const getCurrencies = () => {
 
 const submit = () => {
   if (form.loaners.length === 0 || form.loanees.length === 0) {
-    warning.value = trans('Please indicate the contacts');
+    warning.value = trans(t('Please indicate the contacts'));
     return;
   }
 
@@ -89,7 +91,7 @@ const submit = () => {
   axios
     .post(props.data.url.store, form)
     .then((response) => {
-      flash(trans('The loan has been created'), 'success');
+      flash(trans(t('The loan has been created')), 'success');
       localLoans.value.unshift(response.data.data);
       loadingState.value = '';
       createLoanModalShown.value = false;
@@ -107,7 +109,7 @@ const update = (loan) => {
     .put(loan.url.update, form)
     .then((response) => {
       loadingState.value = '';
-      flash(trans('The loan has been updated'), 'success');
+      flash(trans(t('The loan has been updated')), 'success');
       localLoans.value[localLoans.value.findIndex((x) => x.id === loan.id)] = response.data.data;
       editedLoanId.value = 0;
     })
@@ -118,11 +120,11 @@ const update = (loan) => {
 };
 
 const destroy = (loan) => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     axios
       .delete(loan.url.destroy)
       .then(() => {
-        flash(trans('The loan has been deleted'), 'success');
+        flash(trans(t('The loan has been deleted')), 'success');
         let id = localLoans.value.findIndex((x) => x.id === loan.id);
         localLoans.value.splice(id, 1);
       })
@@ -137,7 +139,7 @@ const toggle = (loan) => {
   axios
     .put(loan.url.toggle, form)
     .then((response) => {
-      flash(trans('The loan has been settled'), 'success');
+      flash(trans(t('The loan has been settled')), 'success');
       localLoans.value[localLoans.value.findIndex((x) => x.id === loan.id)] = response.data.data;
     })
     .catch((error) => {

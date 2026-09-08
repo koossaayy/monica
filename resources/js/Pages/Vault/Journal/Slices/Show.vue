@@ -6,6 +6,8 @@ import Layout from '@/Layouts/Layout.vue';
 import ContactCard from '@/Shared/ContactCard.vue';
 import Uploadcare from '@/Components/Uploadcare.vue';
 
+const t = trans;
+
 const props = defineProps({
   layoutData: Object,
   data: Object,
@@ -49,7 +51,7 @@ const destroyCoverImage = () => {
 };
 
 const destroy = () => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     form.delete(props.data.slice.url.destroy);
   }
 };

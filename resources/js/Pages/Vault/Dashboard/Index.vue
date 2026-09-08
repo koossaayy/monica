@@ -41,7 +41,7 @@ const changeTab = (tab) => {
 </script>
 
 <template>
-  <Layout title="Dashboard" :inside-vault="true" :layout-data="layoutData">
+  <Layout :title="$t('Dashboard')" :inside-vault="true" :layout-data="layoutData">
     <main class="relative sm:mt-24">
       <div class="max-w-8xl mx-auto py-2 sm:px-6 sm:py-6 lg:px-8">
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">

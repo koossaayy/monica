@@ -60,7 +60,7 @@ export default {
       axios
         .put(this.data.url.toggle_favorite)
         .then((response) => {
-          this.flash(this.$t('Changes saved'), 'success');
+          this.flash(this.$t(this.$t('Changes saved')), 'success');
           this.localData = response.data.data;
         })
         .catch((error) => {

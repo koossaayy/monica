@@ -224,7 +224,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('The group has been added'), 'success');
+          this.flash(this.$t(this.$t('The group has been added')), 'success');
           this.localGroups.unshift(response.data.data);
           this.loadingState = null;
           this.addGroupMode = false;
@@ -236,11 +236,11 @@ export default {
     },
 
     destroy(group) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(group.url.destroy)
           .then(() => {
-            this.flash(this.$t('The contact has been removed from the group'), 'success');
+            this.flash(this.$t(this.$t('The contact has been removed from the group')), 'success');
             var id = this.localGroups.findIndex((x) => x.id === group.id);
             this.localGroups.splice(id, 1);
           })

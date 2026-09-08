@@ -455,7 +455,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('The post template has been created'), 'success');
+          this.flash(this.$t(this.$t('The post template has been created')), 'success');
           this.localPostTemplates.push(response.data.data);
           this.loadingState = null;
           this.createPostTemplateModalShown = false;
@@ -472,7 +472,7 @@ export default {
       axios
         .put(postTemplate.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The post template has been updated'), 'success');
+          this.flash(this.$t(this.$t('The post template has been updated')), 'success');
           this.localPostTemplates[this.localPostTemplates.findIndex((x) => x.id === postTemplate.id)] =
             response.data.data;
           this.loadingState = null;
@@ -485,11 +485,11 @@ export default {
     },
 
     destroy(postTemplate) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(postTemplate.url.destroy)
           .then(() => {
-            this.flash(this.$t('The post template has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The post template has been deleted')), 'success');
             var id = this.localPostTemplates.findIndex((x) => x.id === postTemplate.id);
             this.localPostTemplates.splice(id, 1);
           })
@@ -507,7 +507,7 @@ export default {
       axios
         .post(event.moved.element.url.position, this.form)
         .then(() => {
-          this.flash(this.$t('The position has been saved'), 'success');
+          this.flash(this.$t(this.$t('The position has been saved')), 'success');
         })
         .catch((error) => {
           this.loadingState = null;
@@ -521,7 +521,7 @@ export default {
       axios
         .post(postTemplate.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('The section has been created'), 'success');
+          this.flash(this.$t(this.$t('The section has been created')), 'success');
           var id = this.localPostTemplates.findIndex((x) => x.id === postTemplate.id);
           this.localPostTemplates[id].post_template_sections.push(response.data.data);
           this.loadingState = null;
@@ -540,7 +540,7 @@ export default {
       axios
         .put(section.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The section has been updated'), 'success');
+          this.flash(this.$t(this.$t('The section has been updated')), 'success');
 
           var postTemplateId = this.localPostTemplates.findIndex((x) => x.id === section.post_template_id);
           var sectionId = this.localPostTemplates[postTemplateId].post_template_sections.findIndex(
@@ -559,11 +559,11 @@ export default {
     },
 
     destroySection(section) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(section.url.destroy)
           .then(() => {
-            this.flash(this.$t('The section has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The section has been deleted')), 'success');
 
             var postTemplateId = this.localPostTemplates.findIndex((x) => x.id === section.post_template_id);
             var sectionId = this.localPostTemplates[postTemplateId].post_template_sections.findIndex(

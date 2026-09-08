@@ -136,7 +136,7 @@ export default {
       axios
         .put(this.data.url.update, this.form)
         .then((response) => {
-          localStorage.success = this.$t('The vault has been updated');
+          localStorage.success = this.$t(this.$t('The vault has been updated'));
           this.$inertia.visit(response.data.data);
         })
         .catch(() => {

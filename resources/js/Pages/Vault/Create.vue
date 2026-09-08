@@ -128,7 +128,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          localStorage.success = this.$t('The vault has been created');
+          localStorage.success = this.$t(this.$t('The vault has been created'));
           this.$inertia.visit(response.data.data);
         })
         .catch(() => {

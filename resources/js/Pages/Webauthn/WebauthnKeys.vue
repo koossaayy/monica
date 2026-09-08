@@ -13,6 +13,8 @@ import { webAuthnNotSupportedMessage } from '@/methods.js';
 import { startRegistration, browserSupportsWebAuthn } from '@simplewebauthn/browser';
 import { KeyRound } from 'lucide-vue-next';
 
+const t = trans;
+
 const props = defineProps({
   webauthnKeys: Array,
   publicKey: Object,
@@ -47,9 +49,9 @@ onMounted(() => {
 const _errorMessage = (name, message) => {
   switch (name) {
     case 'InvalidStateError':
-      return trans('This key is already registered. It’s not necessary to register it again.');
+      return trans(t('This key is already registered. It’s not necessary to register it again.'));
     case 'NotAllowedError':
-      return trans('The operation either timed out or was not allowed.');
+      return trans(t('The operation either timed out or was not allowed.'));
     default:
       return message;
   }

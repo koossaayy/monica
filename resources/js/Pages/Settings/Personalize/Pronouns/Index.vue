@@ -228,7 +228,7 @@ export default {
       axios
         .post(this.data.url.pronoun_store, this.form)
         .then((response) => {
-          this.flash(this.$t('The pronoun has been created'), 'success');
+          this.flash(this.$t(this.$t('The pronoun has been created')), 'success');
           this.localPronouns.unshift(response.data.data);
           this.loadingState = null;
           this.createPronounModalShown = false;
@@ -245,7 +245,7 @@ export default {
       axios
         .put(pronoun.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The pronoun has been updated'), 'success');
+          this.flash(this.$t(this.$t('The pronoun has been updated')), 'success');
           this.localPronouns[this.localPronouns.findIndex((x) => x.id === pronoun.id)] = response.data.data;
           this.loadingState = null;
           this.renamePronounModalShownId = 0;
@@ -257,11 +257,11 @@ export default {
     },
 
     destroy(pronoun) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(pronoun.url.destroy)
           .then(() => {
-            this.flash(this.$t('The pronoun has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The pronoun has been deleted')), 'success');
             var id = this.localPronouns.findIndex((x) => x.id === pronoun.id);
             this.localPronouns.splice(id, 1);
           })

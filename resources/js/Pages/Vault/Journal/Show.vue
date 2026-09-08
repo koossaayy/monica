@@ -4,6 +4,8 @@ import Layout from '@/Layouts/Layout.vue';
 import PrettyLink from '@/Shared/Form/PrettyLink.vue';
 import { trans } from 'laravel-vue-i18n';
 import { ChevronRight } from 'lucide-vue-next';
+
+const t = trans;
 const props = defineProps({
   layoutData: Object,
   data: Object,
@@ -12,10 +14,10 @@ const props = defineProps({
 const form = useForm({});
 
 const destroy = () => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     form.delete(props.data.url.destroy, {
       onFinish: () => {
-        localStorage.success = trans('Changes saved');
+        localStorage.success = trans(t('Changes saved'));
       },
     });
   }

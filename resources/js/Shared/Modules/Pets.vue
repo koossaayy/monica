@@ -199,7 +199,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('The pet has been added'), 'success');
+          this.flash(this.$t(this.$t('The pet has been added')), 'success');
           this.localPets.unshift(response.data.data);
           this.loadingState = '';
           this.addPetModalShown = false;
@@ -217,7 +217,7 @@ export default {
         .put(pet.url.update, this.form)
         .then((response) => {
           this.loadingState = '';
-          this.flash(this.$t('The pet has been updated'), 'success');
+          this.flash(this.$t(this.$t('The pet has been updated')), 'success');
           this.localPets[this.localPets.findIndex((x) => x.id === pet.id)] = response.data.data;
           this.editedPetId = 0;
         })
@@ -228,11 +228,11 @@ export default {
     },
 
     destroy(pet) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(pet.url.destroy)
           .then(() => {
-            this.flash(this.$t('The pet has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The pet has been deleted')), 'success');
             var id = this.localPets.findIndex((x) => x.id === pet.id);
             this.localPets.splice(id, 1);
           })

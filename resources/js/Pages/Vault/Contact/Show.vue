@@ -37,6 +37,8 @@ import QuickFacts from '@/Shared/Modules/QuickFacts.vue';
 import Uploadcare from '@/Components/Uploadcare.vue';
 import { ChevronRight } from 'lucide-vue-next';
 
+const t = trans;
+
 const props = defineProps({
   layoutData: Object,
   data: Object,
@@ -71,7 +73,7 @@ const destroy = () => {
     .then((response) => {
       deleteContactForm.processing = false;
 
-      localStorage.success = trans('The contact has been deleted');
+      localStorage.success = trans(t('The contact has been deleted'));
       router.visit(response.data.data);
     })
     .catch((error) => {
@@ -88,7 +90,7 @@ const toggleArchive = () => {
     .then((response) => {
       toggleArchiveForm.processing = false;
 
-      localStorage.success = trans('Changes saved');
+      localStorage.success = trans(t('Changes saved'));
       router.visit(response.data.data);
     })
     .catch((error) => {
@@ -113,7 +115,7 @@ const upload = () => {
     .put(props.data.url.update_avatar, form)
     .then((response) => {
       router.visit(response.data.data);
-      flash(trans('The photo has been added'), 'success');
+      flash(trans(t('The photo has been added')), 'success');
     })
     .catch((error) => {
       form.errors = error.response.data;
@@ -125,7 +127,7 @@ const destroyAvatar = () => {
     .delete(props.data.url.destroy_avatar)
     .then((response) => {
       router.visit(response.data.data);
-      flash(trans('Changes saved'), 'success');
+      flash(trans(t('Changes saved')), 'success');
     })
     .catch((error) => {
       form.errors = error.response.data;

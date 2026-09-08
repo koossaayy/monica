@@ -267,7 +267,7 @@ export default {
       axios
         .post(channel.url.send_test)
         .then(() => {
-          this.flash(this.$t('The test email has been sent'), 'success');
+          this.flash(this.$t(this.$t('The test email has been sent')), 'success');
           this.testEmailSentId = channel.id;
         })
         .catch((error) => {
@@ -279,7 +279,7 @@ export default {
       axios
         .put(channel.url.toggle)
         .then((response) => {
-          this.flash(this.$t('The channel has been updated'), 'success');
+          this.flash(this.$t(this.$t('The channel has been updated')), 'success');
           this.localEmails[this.localEmails.findIndex((x) => x.id === channel.id)] = response.data.data;
         })
         .catch((error) => {
@@ -293,7 +293,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('The email has been added'), 'success');
+          this.flash(this.$t(this.$t('The email has been added')), 'success');
           this.localEmails.unshift(response.data.data);
           this.loadingState = null;
           this.addEmailModalShown = false;
@@ -305,11 +305,11 @@ export default {
     },
 
     destroy(channel) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(channel.url.destroy)
           .then(() => {
-            this.flash(this.$t('The email address has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The email address has been deleted')), 'success');
             var id = this.localEmails.findIndex((x) => x.id === channel.id);
             this.localEmails.splice(id, 1);
           })

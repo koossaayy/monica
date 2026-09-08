@@ -195,7 +195,7 @@ export default {
       axios
         .put(this.localGoal.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The goal has been updated'), 'success');
+          this.flash(this.$t(this.$t('The goal has been updated')), 'success');
           this.localGoal = response.data.data;
           this.editMode = false;
         })
@@ -205,11 +205,11 @@ export default {
     },
 
     destroy() {
-      if (confirm(this.$t('Are you sure? This will delete the goal and all the streaks permanently.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This will delete the goal and all the streaks permanently.')))) {
         axios
           .delete(this.localGoal.url.destroy)
           .then((response) => {
-            localStorage.success = this.$t('The goal has been deleted');
+            localStorage.success = this.$t(this.$t('The goal has been deleted'));
             this.$inertia.visit(response.data.data);
           })
           .catch((error) => {

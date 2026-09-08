@@ -229,7 +229,7 @@ export default {
       axios
         .post(this.data.url.template_page_store, this.form)
         .then((response) => {
-          this.flash(this.$t('The page has been added'), 'success');
+          this.flash(this.$t(this.$t('The page has been added')), 'success');
           this.localPages.push(response.data.data);
           this.loadingState = null;
           this.createPageModalShown = false;
@@ -246,7 +246,7 @@ export default {
       axios
         .put(page.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The page has been updated'), 'success');
+          this.flash(this.$t(this.$t('The page has been updated')), 'success');
           this.localPages[this.localPages.findIndex((x) => x.id === page.id)] = response.data.data;
           this.loadingState = null;
           this.renamePageModalShownId = 0;
@@ -258,11 +258,11 @@ export default {
     },
 
     destroy(page) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(page.url.destroy)
           .then(() => {
-            this.flash(this.$t('The page has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The page has been deleted')), 'success');
             var id = this.localPages.findIndex((x) => x.id === page.id);
             this.localPages.splice(id, 1);
           })
@@ -281,7 +281,7 @@ export default {
       axios
         .post(event.moved.element.url.order, this.form)
         .then(() => {
-          this.flash(this.$t('The position has been saved'), 'success');
+          this.flash(this.$t(this.$t('The position has been saved')), 'success');
         })
         .catch((error) => {
           this.loadingState = null;

@@ -9,6 +9,8 @@ import Errors from '@/Shared/Form/Errors.vue';
 import Help from '@/Shared/Help.vue';
 import Dropdown from '@/Shared/Form/Dropdown.vue';
 
+const t = trans;
+
 const props = defineProps({
   data: Object,
 });
@@ -27,7 +29,7 @@ const submit = () => {
   axios
     .post(props.data.url.store, form.data())
     .then((response) => {
-      flash(trans('Changes saved'), 'success');
+      flash(trans(t('Changes saved')), 'success');
       localLocale.value = response.data.data.name;
       editMode.value = false;
       loadingState.value = null;

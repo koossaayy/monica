@@ -11,6 +11,8 @@ import TextInput from '@/Shared/Form/TextInput.vue';
 import JetConfirmationModal from '@/Components/Jetstream/ConfirmationModal.vue';
 import { Headset } from 'lucide-vue-next';
 
+const t = trans;
+
 const props = defineProps({
   data: Object,
 });
@@ -98,7 +100,7 @@ const submit = () => {
       localData.value[type].unshift(response.data.data);
       loadingState.value = '';
       adding.value = false;
-      flash(trans('The contact information has been created'), 'success');
+      flash(trans(t('The contact information has been created')), 'success');
     })
     .catch((error) => {
       loadingState.value = '';
@@ -117,7 +119,7 @@ const update = (info) => {
       const type = response.data.data.contact_information_type.type;
       localData.value[type][localData.value[type].findIndex((x) => x.id === info.id)] = response.data.data;
       editingId.value = 0;
-      flash(trans('The contact information has been updated'), 'success');
+      flash(trans(t('The contact information has been updated')), 'success');
     })
     .catch((error) => {
       loadingState.value = '';
@@ -138,7 +140,7 @@ const destroy = () => {
         1,
       );
       deleting.value = null;
-      flash(trans('The contact information has been deleted'), 'success');
+      flash(trans(t('The contact information has been deleted')), 'success');
     })
     .catch((error) => {
       loadingState.value = '';

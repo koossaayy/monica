@@ -71,11 +71,11 @@ export default {
 
   methods: {
     destroy() {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(this.data.url.destroy)
           .then((response) => {
-            localStorage.success = this.$t('The vault has been deleted');
+            localStorage.success = this.$t(this.$t('The vault has been deleted'));
             this.$inertia.visit(response.data.data);
           })
           .catch((error) => {

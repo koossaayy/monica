@@ -17,6 +17,8 @@ import JetInputError from '@/Components/InputError.vue';
 import JetLabel from '@/Components/Label.vue';
 import JetSecondaryButton from '@/Components/Jetstream/SecondaryButton.vue';
 
+const t = trans;
+
 const props = defineProps({
   tokens: Array,
   availablePermissions: Array,
@@ -88,7 +90,7 @@ const copyToClipboard = (token) => {
   toClipboard(token).then(() => {
     copied.value = true;
     setTimeout(() => (copied.value = false), 2000);
-    flash(trans('Value copied into your clipboard'));
+    flash(trans(t('Value copied into your clipboard')));
   });
 };
 </script>

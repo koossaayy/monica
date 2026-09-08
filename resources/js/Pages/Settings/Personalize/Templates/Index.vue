@@ -264,7 +264,7 @@ export default {
       axios
         .post(this.data.url.template_store, this.form)
         .then((response) => {
-          this.flash(this.$t('The template has been created'), 'success');
+          this.flash(this.$t(this.$t('The template has been created')), 'success');
           this.localTemplates.unshift(response.data.data);
           this.loadingState = null;
           this.createTemplateModalShown = false;
@@ -281,7 +281,7 @@ export default {
       axios
         .put(template.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The template has been updated'), 'success');
+          this.flash(this.$t(this.$t('The template has been updated')), 'success');
           this.localTemplates[this.localTemplates.findIndex((x) => x.id === template.id)] = response.data.data;
           this.loadingState = null;
           this.renameTemplateModalShownId = 0;
@@ -296,14 +296,14 @@ export default {
       if (
         confirm(
           this.$t(
-            'Are you sure? This will remove the template from all contacts, but won’t delete the contacts themselves.',
+            this.$t('Are you sure? This will remove the template from all contacts, but won’t delete the contacts themselves.'),
           ),
         )
       ) {
         axios
           .delete(template.url.destroy)
           .then(() => {
-            this.flash(this.$t('The template has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The template has been deleted')), 'success');
             var id = this.localTemplates.findIndex((x) => x.id === template.id);
             this.localTemplates.splice(id, 1);
           })
