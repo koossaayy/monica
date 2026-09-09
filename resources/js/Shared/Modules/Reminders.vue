@@ -311,7 +311,7 @@ const destroy = (reminder) => {
               <a-tooltip
                 v-if="reminder.type !== 'one_time'"
                 placement="topLeft"
-                title="Recurring"
+                :title="$t('Recurring')"
                 arrow-point-at-center>
                 <RefreshIcon />
               </a-tooltip>

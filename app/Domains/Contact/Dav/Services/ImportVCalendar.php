@@ -43,7 +43,7 @@ class ImportVCalendar extends BaseService implements ServiceInterface
                 'required',
                 function (string $attribute, mixed $value, Closure $fail) {
                     if (! is_string($value) && ! is_resource($value) && ! $value instanceof VCalendar) {
-                        $fail($attribute.' must be a string, a resource, or a VCalendar object.');
+                        $fail(__(':attribute must be a string, a resource, or a VCalendar object.', ['attribute' => $attribute]));
                     }
                 },
             ],

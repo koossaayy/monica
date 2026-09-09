@@ -167,7 +167,7 @@
 
             <!-- emotion -->
             <div v-if="form.emotion" class="mt-2 block w-full">
-              <p class="mb-2">How did you feel?</p>
+              <p class="mb-2">{{ $t('How did you feel?') }}</p>
               <div v-for="emotion in data.emotions" :key="emotion.id" class="mb-2 flex items-center">
                 <input
                   :id="emotion.type"

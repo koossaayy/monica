@@ -32,7 +32,7 @@ class AuthBackend implements BackendInterface
     public function check(RequestInterface $request, ResponseInterface $response): array
     {
         if (! Auth::check()) {
-            return [false, 'User is not authenticated'];
+            return [false, __('User is not authenticated')];
         }
 
         return [true, PrincipalBackend::getPrincipalUser(Auth::user())];

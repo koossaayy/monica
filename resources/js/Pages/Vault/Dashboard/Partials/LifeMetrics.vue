@@ -220,7 +220,7 @@ const destroy = (lifeMetric) => {
                   <td :style="'--size: calc(' + month.events + '/' + lifeMetric.max_number_of_events">
                     {{ month.friendly_name }}
 
-                    <span class="tooltip"> {{ month.events }} events </span>
+                    <span class="tooltip"> {{ $t('{0} events', [month.events]) }} </span>
                   </td>
                 </tr>
               </tbody>

@@ -428,7 +428,7 @@ const destroy = (call) => {
             <!-- date -->
             <div class="flex border-b border-gray-200 dark:border-gray-700">
               <div class="p-5">
-                <p class="mb-2 block text-sm">When did the call happened?</p>
+                <p class="mb-2 block text-sm">{{ $t('When did the call happened?') }}</p>
                 <DatePicker
                   v-model.string="form.called_at"
                   class="inline-block h-full"

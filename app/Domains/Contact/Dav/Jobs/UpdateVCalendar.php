@@ -28,7 +28,7 @@ class UpdateVCalendar extends BaseService implements ServiceInterface
                 'required',
                 function (string $attribute, mixed $value, Closure $fail) {
                     if (! is_string($value) && ! is_resource($value)) {
-                        $fail($attribute.' must be a string or a resource.');
+                        $fail(__(':attribute must be a string or a resource.', ['attribute' => $attribute]));
                     }
                 },
             ],

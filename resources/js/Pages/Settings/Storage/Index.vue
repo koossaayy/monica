@@ -1,6 +1,6 @@
 <template>
   <layout
-    title="Dashboard"
+    :title="$t('Dashboard')"
     :layout-data="layoutData"
   >
     <!-- breadcrumb -->

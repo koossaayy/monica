@@ -416,8 +416,8 @@ export default {
 
   created() {
     this.form.base_contact_id = this.data.contact.id;
-    this.fromRelationship = 'Father';
-    this.toRelationship = 'Child';
+    this.fromRelationship = this.$t('Father');
+    this.toRelationship = this.$t('Child');
   },
 
   methods: {

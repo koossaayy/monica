@@ -140,7 +140,7 @@ const submit = () => {
             for="first_name_last_name"
             class="ms-3 block cursor-pointer text-sm font-medium text-gray-700 dark:text-gray-300">
             {{ $t('First name Last name') }}
-            <span class="ms-4 font-normal text-gray-500"> James Bond </span>
+            <span class="ms-4 font-normal text-gray-500"> {{ $t('James Bond') }} </span>
           </label>
         </div>
         <div class="mb-2 flex items-center">
@@ -156,7 +156,7 @@ const submit = () => {
             class="ms-3 block cursor-pointer text-sm font-medium text-gray-700 dark:text-gray-300">
             {{ $t('Last name First name') }}
 
-            <span class="ms-4 font-normal text-gray-500"> Bond James </span>
+            <span class="ms-4 font-normal text-gray-500"> {{ $t('Bond James') }} </span>
           </label>
         </div>
         <div class="mb-2 flex items-center">
@@ -171,7 +171,7 @@ const submit = () => {
             for="first_name_last_name_nickname"
             class="ms-3 block cursor-pointer text-sm font-medium text-gray-700 dark:text-gray-300">
             {{ $t('First name Last name (nickname)') }}
-            <span class="ms-4 font-normal text-gray-500"> James Bond (007) </span>
+            <span class="ms-4 font-normal text-gray-500"> {{ $t('James Bond (007)') }} </span>
           </label>
         </div>
         <div class="mb-2 flex items-center">

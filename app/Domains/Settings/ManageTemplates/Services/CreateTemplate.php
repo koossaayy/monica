@@ -55,7 +55,7 @@ class CreateTemplate extends BaseService implements ServiceInterface
             'account_id' => $data['account_id'],
             'author_id' => $data['author_id'],
             'template_id' => $this->template->id,
-            'name_translation_key' => trans_key('Contact information'),
+            'name_translation_key' => trans_key(__('Contact information')),
             'can_be_deleted' => false,
             'type' => TemplatePage::TYPE_CONTACT,
         ];
