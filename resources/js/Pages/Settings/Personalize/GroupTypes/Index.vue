@@ -464,7 +464,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('The group type has been created'), 'success');
+          this.flash(this.$t(this.$t('The group type has been created')), 'success');
           this.localGroupTypes.push(response.data.data);
           this.loadingState = null;
           this.createGroupTypeModalShown = false;
@@ -481,7 +481,7 @@ export default {
       axios
         .put(groupType.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The group type has been updated'), 'success');
+          this.flash(this.$t(this.$t('The group type has been updated')), 'success');
           this.localGroupTypes[this.localGroupTypes.findIndex((x) => x.id === groupType.id)] = response.data.data;
           this.loadingState = null;
           this.editGroupTypeId = 0;
@@ -493,11 +493,11 @@ export default {
     },
 
     destroy(groupType) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(groupType.url.destroy)
           .then(() => {
-            this.flash(this.$t('The group type has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The group type has been deleted')), 'success');
             var id = this.localGroupTypes.findIndex((x) => x.id === groupType.id);
             this.localGroupTypes.splice(id, 1);
           })
@@ -515,7 +515,7 @@ export default {
       axios
         .post(event.moved.element.url.position, this.form)
         .then(() => {
-          this.flash(this.$t('The position has been saved'), 'success');
+          this.flash(this.$t(this.$t('The position has been saved')), 'success');
         })
         .catch((error) => {
           this.loadingState = null;
@@ -529,7 +529,7 @@ export default {
       axios
         .post(groupType.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('The role has been created'), 'success');
+          this.flash(this.$t(this.$t('The role has been created')), 'success');
           var id = this.localGroupTypes.findIndex((x) => x.id === groupType.id);
           this.localGroupTypes[id].group_type_roles.push(response.data.data);
           this.loadingState = null;
@@ -548,7 +548,7 @@ export default {
       axios
         .put(role.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The role has been updated'), 'success');
+          this.flash(this.$t(this.$t('The role has been updated')), 'success');
 
           var groupTypeId = this.localGroupTypes.findIndex((x) => x.id === role.group_type_id);
           var roleId = this.localGroupTypes[groupTypeId].group_type_roles.findIndex((x) => x.id === role.id);
@@ -565,11 +565,11 @@ export default {
     },
 
     destroyRole(role) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(role.url.destroy)
           .then(() => {
-            this.flash(this.$t('The role has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The role has been deleted')), 'success');
 
             var groupTypeId = this.localGroupTypes.findIndex((x) => x.id === role.group_type_id);
             var roleId = this.localGroupTypes[groupTypeId].group_type_roles.findIndex((x) => x.id === role.id);

@@ -226,7 +226,7 @@ export default {
       axios
         .post(this.data.url.pet_category_store, this.form)
         .then((response) => {
-          this.flash(this.$t('The pet category has been created'), 'success');
+          this.flash(this.$t(this.$t('The pet category has been created')), 'success');
           this.localPetCategories.unshift(response.data.data);
           this.loadingState = null;
           this.createPetCategoryModalShown = false;
@@ -243,7 +243,7 @@ export default {
       axios
         .put(petCategory.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The pet category has been updated'), 'success');
+          this.flash(this.$t(this.$t('The pet category has been updated')), 'success');
           this.localPetCategories[this.localPetCategories.findIndex((x) => x.id === petCategory.id)] =
             response.data.data;
           this.loadingState = null;
@@ -256,11 +256,11 @@ export default {
     },
 
     destroy(petCategory) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(petCategory.url.destroy)
           .then(() => {
-            this.flash(this.$t('The pet category has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The pet category has been deleted')), 'success');
             var id = this.localPetCategories.findIndex((x) => x.id === petCategory.id);
             this.localPetCategories.splice(id, 1);
           })

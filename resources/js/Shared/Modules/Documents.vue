@@ -139,7 +139,7 @@ export default {
         .post(this.data.url.store, this.form)
         .then((response) => {
           this.localDocuments.unshift(response.data.data);
-          this.flash(this.$t('The document has been added'), 'success');
+          this.flash(this.$t(this.$t('The document has been added')), 'success');
         })
         .catch((error) => {
           this.form.errors = error.response.data;
@@ -147,11 +147,11 @@ export default {
     },
 
     destroy(document) {
-      if (confirm(this.$t('Are you sure? This will delete the document permanently.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This will delete the document permanently.')))) {
         axios
           .delete(document.url.destroy)
           .then(() => {
-            this.flash(this.$t('Are you sure? This will delete the document permanently.'), 'success');
+            this.flash(this.$t(this.$t('Are you sure? This will delete the document permanently.')), 'success');
             var id = this.localDocuments.findIndex((x) => x.id === document.id);
             this.localDocuments.splice(id, 1);
           })

@@ -359,7 +359,7 @@ export default {
       axios
         .post(this.data.url.call_reason_type_store, this.form)
         .then((response) => {
-          this.flash(this.$t('The call reason type has been created'), 'success');
+          this.flash(this.$t(this.$t('The call reason type has been created')), 'success');
           this.localCallReasonTypes.unshift(response.data.data);
           this.loadingState = null;
           this.createCallReasonTypeModalShown = false;
@@ -376,7 +376,7 @@ export default {
       axios
         .put(callReasonType.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The call reason type has been updated'), 'success');
+          this.flash(this.$t(this.$t('The call reason type has been updated')), 'success');
           this.localCallReasonTypes[this.localCallReasonTypes.findIndex((x) => x.id === callReasonType.id)] =
             response.data.data;
           this.loadingState = null;
@@ -392,14 +392,14 @@ export default {
       if (
         confirm(
           this.$t(
-            'Are you sure? This will delete all the call reasons of this type for all the contacts that were using it.',
+            this.$t('Are you sure? This will delete all the call reasons of this type for all the contacts that were using it.'),
           ),
         )
       ) {
         axios
           .delete(callReasonType.url.destroy)
           .then(() => {
-            this.flash(this.$t('The call reason type has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The call reason type has been deleted')), 'success');
             var id = this.localCallReasonTypes.findIndex((x) => x.id === callReasonType.id);
             this.localCallReasonTypes.splice(id, 1);
           })
@@ -416,7 +416,7 @@ export default {
       axios
         .post(callReasonType.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('The call reason has been created'), 'success');
+          this.flash(this.$t(this.$t('The call reason has been created')), 'success');
           this.loadingState = null;
           this.createReasonModalId = 0;
           var id = this.localCallReasonTypes.findIndex((x) => x.id === callReasonType.id);
@@ -434,7 +434,7 @@ export default {
       axios
         .put(reason.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The call reason has been updated'), 'success');
+          this.flash(this.$t(this.$t('The call reason has been updated')), 'success');
           this.loadingState = null;
           this.renameReasonModalId = 0;
           var callReasonTypeId = this.localCallReasonTypes.findIndex((x) => x.id === callReasonType.id);
@@ -451,14 +451,14 @@ export default {
       if (
         confirm(
           this.$t(
-            'Are you sure? This will delete all the relationships of this type for all the contacts that were using it.',
+            this.$t('Are you sure? This will delete all the relationships of this type for all the contacts that were using it.'),
           ),
         )
       ) {
         axios
           .delete(reason.url.destroy)
           .then(() => {
-            this.flash(this.$t('The call reason has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The call reason has been deleted')), 'success');
             var callReasonTypeId = this.localCallReasonTypes.findIndex((x) => x.id === callReasonType.id);
             var typeId = this.localCallReasonTypes[callReasonTypeId].reasons.findIndex((x) => x.id === reason.id);
             this.localCallReasonTypes[callReasonTypeId].reasons.splice(typeId, 1);

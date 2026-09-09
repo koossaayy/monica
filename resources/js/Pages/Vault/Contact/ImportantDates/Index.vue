@@ -8,6 +8,8 @@ import PrettyButton from '@/Shared/Form/PrettyButton.vue';
 import CreateOrEditImportantDate from './Partials/CreateOrEditImportantDate.vue';
 import Errors from '@/Shared/Form/Errors.vue';
 
+const t = trans;
+
 const props = defineProps({
   layoutData: Object,
   data: Object,
@@ -33,23 +35,23 @@ const updateDateModal = (date) => {
 };
 
 const created = (date) => {
-  flash(trans('The date has been added'), 'success');
+  flash(trans(t('The date has been added')), 'success');
   localDates.value.unshift(date);
   createDateModalShown.value = false;
 };
 
 const updated = (date) => {
-  flash(trans('The date has been updated'), 'success');
+  flash(trans(t('The date has been updated')), 'success');
   localDates.value[localDates.value.findIndex((x) => x.id === date.id)] = date;
   editedDateId.value = 0;
 };
 
 const destroy = (date) => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     axios
       .delete(date.url.destroy)
       .then(() => {
-        flash(trans('The date has been deleted'), 'success');
+        flash(trans(t('The date has been deleted')), 'success');
         let id = localDates.value.findIndex((x) => x.id === date.id);
         localDates.value.splice(id, 1);
       })

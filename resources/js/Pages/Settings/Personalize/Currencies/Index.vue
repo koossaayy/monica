@@ -173,7 +173,7 @@ export default {
       axios
         .put(currency.url.update, this.form)
         .then(() => {
-          this.flash(this.$t('The currency has been updated'), 'success');
+          this.flash(this.$t(this.$t('The currency has been updated')), 'success');
           this.localCurrencies[this.localCurrencies.findIndex((x) => x.id === currency.id)].active = !currency.active;
         })
         .catch((error) => {
@@ -185,7 +185,7 @@ export default {
       axios
         .post(this.data.url.enable_all)
         .then(() => {
-          this.flash(this.$t('The currencies have been updated'), 'success');
+          this.flash(this.$t(this.$t('The currencies have been updated')), 'success');
           this.localCurrencies.forEach((entry) => {
             entry.active = true;
           });
@@ -199,7 +199,7 @@ export default {
       axios
         .delete(this.data.url.disable_all)
         .then(() => {
-          this.flash(this.$t('The currencies have been updated'), 'success');
+          this.flash(this.$t(this.$t('The currencies have been updated')), 'success');
           this.localCurrencies.forEach((entry) => {
             entry.active = false;
           });

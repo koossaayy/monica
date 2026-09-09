@@ -12,6 +12,8 @@ import TextArea from '@/Shared/Form/TextArea.vue';
 import Errors from '@/Shared/Form/Errors.vue';
 import { PhoneCall } from 'lucide-vue-next';
 
+const t = trans;
+
 const props = defineProps({
   data: Object,
 });
@@ -105,7 +107,7 @@ const submit = () => {
     .post(props.data.url.store, form)
     .then((response) => {
       loadingState.value = '';
-      flash(trans('The call has been created'), 'success');
+      flash(trans(t('The call has been created')), 'success');
       localCalls.value.unshift(response.data.data);
       createCallModalShown.value = false;
     })
@@ -122,7 +124,7 @@ const update = (call) => {
     .put(call.url.update, form)
     .then((response) => {
       loadingState.value = '';
-      flash(trans('The call has been updated'), 'success');
+      flash(trans(t('The call has been updated')), 'success');
       localCalls.value[localCalls.value.findIndex((x) => x.id === call.id)] = response.data.data;
       editedCallId.value = 0;
     })
@@ -133,11 +135,11 @@ const update = (call) => {
 };
 
 const destroy = (call) => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     axios
       .delete(call.url.destroy)
       .then(() => {
-        flash(trans('The call has been deleted'), 'success');
+        flash(trans(t('The call has been deleted')), 'success');
         let id = localCalls.value.findIndex((x) => x.id === call.id);
         localCalls.value.splice(id, 1);
       })
@@ -428,7 +430,7 @@ const destroy = (call) => {
             <!-- date -->
             <div class="flex border-b border-gray-200 dark:border-gray-700">
               <div class="p-5">
-                <p class="mb-2 block text-sm">When did the call happened?</p>
+                <p class="mb-2 block text-sm">{{ $t('When did the call happened?') }}</p>
                 <DatePicker
                   v-model.string="form.called_at"
                   class="inline-block h-full"

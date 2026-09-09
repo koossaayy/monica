@@ -221,7 +221,7 @@ export default {
       axios
         .post(this.data.url.label_store, this.form)
         .then((response) => {
-          this.flash(this.$t('The label has been created'), 'success');
+          this.flash(this.$t(this.$t('The label has been created')), 'success');
           this.localLabels.unshift(response.data.data);
           this.loadingState = null;
           this.createlabelModalShown = false;
@@ -238,7 +238,7 @@ export default {
       axios
         .put(label.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The label has been updated'), 'success');
+          this.flash(this.$t(this.$t('The label has been updated')), 'success');
           this.localLabels[this.localLabels.findIndex((x) => x.id === label.id)] = response.data.data;
           this.loadingState = null;
           this.editLabelModalShownId = 0;
@@ -250,11 +250,11 @@ export default {
     },
 
     destroy(label) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(label.url.destroy)
           .then(() => {
-            this.flash(this.$t('The label has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The label has been deleted')), 'success');
             var id = this.localLabels.findIndex((x) => x.id === label.id);
             this.localLabels.splice(id, 1);
           })

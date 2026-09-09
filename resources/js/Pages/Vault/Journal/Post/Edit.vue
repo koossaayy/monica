@@ -18,6 +18,8 @@ import JetConfirmationModal from '@/Components/Jetstream/ConfirmationModal.vue';
 import JetDangerButton from '@/Components/Jetstream/DangerButton.vue';
 import JetSecondaryButton from '@/Components/Jetstream/SecondaryButton.vue';
 
+const t = trans;
+
 const props = defineProps({
   layoutData: Object,
   data: Object,
@@ -141,7 +143,7 @@ const update = () => {
 };
 
 const destroy = () => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     form.delete(props.data.url.destroy, {
       onFinish: () => {},
     });

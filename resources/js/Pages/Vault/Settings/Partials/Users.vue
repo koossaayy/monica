@@ -281,7 +281,7 @@ export default {
       axios
         .post(this.data.url.user_store, this.form)
         .then((response) => {
-          this.flash(this.$t('The user has been added'), 'success');
+          this.flash(this.$t(this.$t('The user has been added')), 'success');
           this.loadingState = '';
 
           // add user in the list of users in the vault
@@ -305,7 +305,7 @@ export default {
       axios
         .put(user.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The user has been updated'), 'success');
+          this.flash(this.$t(this.$t('The user has been updated')), 'success');
           var id = this.localUsersInVault.findIndex((x) => x.id === user.id);
           this.localUsersInVault[id] = response.data.data;
           this.loadingState = '';
@@ -321,7 +321,7 @@ export default {
       axios
         .delete(user.url.destroy)
         .then(() => {
-          this.flash(this.$t('The user has been removed'), 'success');
+          this.flash(this.$t(this.$t('The user has been removed')), 'success');
 
           // remove the user from the list of users in the vault
           var id = this.localUsersInVault.findIndex((x) => x.id === user.id);

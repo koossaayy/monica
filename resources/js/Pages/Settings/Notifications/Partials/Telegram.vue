@@ -10,6 +10,8 @@ import PrettySpan from '@/Shared/Form/PrettySpan.vue';
 import Errors from '@/Shared/Form/Errors.vue';
 import Dropdown from '@/Shared/Form/Dropdown.vue';
 
+const t = trans;
+
 const props = defineProps({
   data: Object,
 });
@@ -70,7 +72,7 @@ const sendTest = () => {
   axios
     .post(localTelegram.value.url.send_test)
     .then(() => {
-      flash(trans('The notification has been sent'), 'success');
+      flash(trans(t('The notification has been sent')), 'success');
       notificationSent.value = true;
     })
     .catch((error) => {
@@ -84,7 +86,7 @@ const store = () => {
   axios
     .post(props.data.url.store_telegram, form.data())
     .then((response) => {
-      flash(trans('The channel has been added'), 'success');
+      flash(trans(t('The channel has been added')), 'success');
       localTelegram.value = response.data.data;
       loadingState.value = null;
       setupTelegramModalShown.value = false;
@@ -102,11 +104,11 @@ const refresh = debounce(() => {
 }, 2000);
 
 const destroy = () => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     axios
       .delete(localTelegram.value.url.destroy)
       .then(() => {
-        flash(trans('The Telegram channel has been deleted'), 'success');
+        flash(trans(t('The Telegram channel has been deleted')), 'success');
         localTelegram.value = null;
         refresh.cancel();
       })
@@ -201,7 +203,7 @@ const destroy = () => {
         <div
           class="flex items-center justify-between rounded-lg border border-gray-200 px-5 py-2 hover:bg-slate-50 dark:border-gray-700 dark:bg-slate-900 dark:hover:bg-slate-800">
           <div class="flex items-center">
-            <a-tooltip v-if="localTelegram.active" placement="topLeft" title="Verified" arrow-point-at-center>
+            <a-tooltip v-if="localTelegram.active" placement="topLeft" :title="$t('Verified')" arrow-point-at-center>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="me-2 inline h-4 w-4 text-green-600"

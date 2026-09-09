@@ -103,11 +103,11 @@ export default {
 
   methods: {
     destroy(relationshipType) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .put(relationshipType.url.update)
           .then((response) => {
-            this.flash(this.$t('The relationship has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The relationship has been deleted')), 'success');
             this.localRelationships = response.data.data.relationship_group_types;
           })
           .catch((error) => {

@@ -12,6 +12,8 @@ import JetConfirmationModal from '@/Components/Jetstream/ConfirmationModal.vue';
 import Dropdown from '@/Shared/Form/Dropdown.vue';
 import { filter } from 'lodash';
 
+const t = trans;
+
 const props = defineProps({
   layoutData: Object,
   data: Object,
@@ -59,7 +61,7 @@ const submit = () => {
       localContactInformationTypes.value.unshift(response.data.data);
       loadingState.value = null;
       creatingContactInformation.value = false;
-      flash(trans('The contact information type has been created'), 'success');
+      flash(trans(t('The contact information type has been created')), 'success');
     })
     .catch((error) => {
       loadingState.value = null;
@@ -79,7 +81,7 @@ const update = (contactInformationType) => {
       localContactInformationTypes.value[contactInformationType.type][id] = response.data.data;
       loadingState.value = null;
       contactInformationEditing.value = 0;
-      flash(trans('The contact information type has been updated'), 'success');
+      flash(trans(t('The contact information type has been updated')), 'success');
     })
     .catch((error) => {
       loadingState.value = null;
@@ -94,7 +96,7 @@ const destroy = () => {
       let id = localContactInformationTypes.value.findIndex((x) => x.id === contactInformationDeleting.value.id);
       localContactInformationTypes.value.splice(id, 1);
       contactInformationDeleting.value = null;
-      flash(trans('The contact information type has been deleted'), 'success');
+      flash(trans(t('The contact information type has been deleted')), 'success');
     })
     .catch((error) => {
       loadingState.value = null;

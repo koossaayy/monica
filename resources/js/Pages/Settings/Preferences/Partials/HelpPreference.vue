@@ -58,7 +58,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then(() => {
-          this.flash(this.$t('Changes saved'), 'success');
+          this.flash(this.$t(this.$t('Changes saved')), 'success');
           this.$page.props.auth.user.help_shown = this.form.checked;
         })
         .catch((error) => {

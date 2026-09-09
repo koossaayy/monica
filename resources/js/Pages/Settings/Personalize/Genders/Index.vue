@@ -222,7 +222,7 @@ export default {
       axios
         .post(this.data.url.gender_store, this.form)
         .then((response) => {
-          this.flash(this.$t('The gender has been created'), 'success');
+          this.flash(this.$t(this.$t('The gender has been created')), 'success');
           this.localGenders.unshift(response.data.data);
           this.loadingState = null;
           this.createGenderModalShown = false;
@@ -239,7 +239,7 @@ export default {
       axios
         .put(gender.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The gender has been updated'), 'success');
+          this.flash(this.$t(this.$t('The gender has been updated')), 'success');
           this.localGenders[this.localGenders.findIndex((x) => x.id === gender.id)] = response.data.data;
           this.loadingState = null;
           this.renameGenderModalShownId = 0;
@@ -254,14 +254,14 @@ export default {
       if (
         confirm(
           this.$t(
-            'Are you sure? This will remove the genders from all contacts, but won’t delete the contacts themselves.',
+            this.$t('Are you sure? This will remove the genders from all contacts, but won’t delete the contacts themselves.'),
           ),
         )
       ) {
         axios
           .delete(gender.url.destroy)
           .then(() => {
-            this.flash(this.$t('The gender has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The gender has been deleted')), 'success');
             var id = this.localGenders.findIndex((x) => x.id === gender.id);
             this.localGenders.splice(id, 1);
           })

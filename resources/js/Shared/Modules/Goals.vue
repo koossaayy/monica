@@ -185,7 +185,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('The goal has been created'), 'success');
+          this.flash(this.$t(this.$t('The goal has been created')), 'success');
           this.localGoals.unshift(response.data.data);
           this.createGoalModalShown = false;
         })
@@ -200,7 +200,7 @@ export default {
       axios
         .put(goal.url.streak_update, this.form)
         .then((response) => {
-          this.flash(this.$t('The goal has been updated'), 'success');
+          this.flash(this.$t(this.$t('The goal has been updated')), 'success');
           this.localGoals[this.localGoals.findIndex((x) => x.id === goal.id)] = response.data.data;
           this.editedGoalId = 0;
         })
@@ -210,11 +210,11 @@ export default {
     },
 
     destroy(goal) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(goal.url.destroy)
           .then(() => {
-            this.flash(this.$t('The goal has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The goal has been deleted')), 'success');
             var id = this.localGoals.findIndex((x) => x.id === goal.id);
             this.localGoals.splice(id, 1);
           })

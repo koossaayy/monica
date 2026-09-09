@@ -11,6 +11,8 @@ import ClockIcon from '@/Shared/Icons/ClockIcon.vue';
 import TwoPinMapIcon from '@/Shared/Icons/TwoPinMapIcon.vue';
 import { Flame } from 'lucide-vue-next';
 
+const t = trans;
+
 const props = defineProps({
   layoutData: Object,
   data: Object,
@@ -49,7 +51,7 @@ const loadMore = () => {
 };
 
 const destroy = (timelineEvent) => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     axios
       .delete(timelineEvent.url.destroy)
       .then(() => {
@@ -61,7 +63,7 @@ const destroy = (timelineEvent) => {
 };
 
 const destroyLifeEvent = (timelineEvent, lifeEvent) => {
-  if (confirm(trans('Are you sure? This action cannot be undone.'))) {
+  if (confirm(trans(t('Are you sure? This action cannot be undone.')))) {
     axios
       .delete(lifeEvent.url.destroy)
       .then(() => {

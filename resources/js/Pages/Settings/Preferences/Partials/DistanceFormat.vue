@@ -102,7 +102,7 @@ export default {
 
   methods: {
     localeDistance(val) {
-      return val === 'mi' ? this.$t('miles (mi)') : this.$t('kilometers (km)');
+      return val === 'mi' ? this.$t(this.$t('miles (mi)')) : this.$t(this.$t('kilometers (km)'));
     },
 
     enableEditMode() {
@@ -115,7 +115,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then(() => {
-          this.flash(this.$t('Changes saved'), 'success');
+          this.flash(this.$t(this.$t('Changes saved')), 'success');
           this.localDistanceFormat = this.form.distanceFormat;
           this.editMode = false;
           this.loadingState = null;

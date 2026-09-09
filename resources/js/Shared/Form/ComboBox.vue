@@ -25,7 +25,7 @@ const props = defineProps({
   },
   newValueSelection: {
     type: Object,
-    default: () => ({ id: '-1', name: trans('Custom…') }),
+    default: () => ({ id: '-1', name: trans(trans('Custom…')) }),
   },
 });
 

@@ -247,7 +247,7 @@ export default {
       axios
         .post(this.data.url.store, this.form)
         .then((response) => {
-          this.flash(this.$t('The religion has been created'), 'success');
+          this.flash(this.$t(this.$t('The religion has been created')), 'success');
           this.localReligions.unshift(response.data.data);
           this.loadingState = null;
           this.createReligionModalShown = false;
@@ -264,7 +264,7 @@ export default {
       axios
         .put(religion.url.update, this.form)
         .then((response) => {
-          this.flash(this.$t('The religion has been updated'), 'success');
+          this.flash(this.$t(this.$t('The religion has been updated')), 'success');
           this.localReligions[this.localReligions.findIndex((x) => x.id === religion.id)] = response.data.data;
           this.loadingState = null;
           this.editReligionId = 0;
@@ -276,11 +276,11 @@ export default {
     },
 
     destroy(religion) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         axios
           .delete(religion.url.destroy)
           .then(() => {
-            this.flash(this.$t('The religion has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The religion has been deleted')), 'success');
             var id = this.localReligions.findIndex((x) => x.id === religion.id);
             this.localReligions.splice(id, 1);
           })
@@ -298,7 +298,7 @@ export default {
       axios
         .post(event.moved.element.url.position, this.form)
         .then(() => {
-          this.flash(this.$t('The position has been saved'), 'success');
+          this.flash(this.$t(this.$t('The position has been saved')), 'success');
         })
         .catch((error) => {
           this.loadingState = null;

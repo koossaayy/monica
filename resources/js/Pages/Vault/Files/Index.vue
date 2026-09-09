@@ -167,12 +167,12 @@ export default {
 
   methods: {
     destroy(file) {
-      if (confirm(this.$t('Are you sure? This action cannot be undone.'))) {
+      if (confirm(this.$t(this.$t('Are you sure? This action cannot be undone.')))) {
         this.errors = [];
         axios
           .delete(file.url.destroy)
           .then(() => {
-            this.flash(this.$t('The document has been deleted'), 'success');
+            this.flash(this.$t(this.$t('The document has been deleted')), 'success');
             var id = this.localFiles.findIndex((x) => x.id === file.id);
             this.localFiles.splice(id, 1);
           })
